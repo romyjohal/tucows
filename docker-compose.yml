@@ -1,0 +1,38 @@
+version: '3.3'
+
+
+services:
+
+  db:
+    image: postgres
+    restart: always
+    shm_size: 128mb
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: user
+    ports:
+      - 5432:5432
+  
+  messageQueue:
+    image: rabbitmq:management
+    restart: always
+    network_mode: host
+    ports:
+      - 5672:5672
+      - 15672:15672
+
+  orderservice:
+    build: 
+      context: ./orderService
+      dockerfile: Dockerfile
+    restart: always
+    network_mode: host
+    ports:
+      - 8090:8090
+  
+  paymentservice:
+    build: 
+      context: ./paymentService
+      dockerfile: Dockerfile
+    network_mode: host
+    restart: always
