@@ -1,7 +1,7 @@
-*requirements*
+#requirements
 - docker
 
-*How to run*
+#How to run
 docker-compose up -d 
 will bring up 
 - order service
@@ -12,7 +12,7 @@ will bring up
 The database and messaging queue will take some time to start
 until they are ready the order service and payment service will be restarting
 
-*How to use*
+#How to use
 
 GET /list will return and array of items availble for purchase
 ```
@@ -43,7 +43,7 @@ curl -XPOST -H "Content-type: application/json" -d '{
 }' 'localhost:8090/orderstatus'
 ```
 
-*Next steps*
+#Next steps
 
 create a dockerfile for the database that includes the schema and seed info
 this will elimination the messy setup in the main.go file
